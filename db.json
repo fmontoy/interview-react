@@ -24,6 +24,12 @@
       "sku": 6327237255,
       "name": "Microphone",
       "price": 543
+    },
+    {
+      "nombre": "Felipe",
+      "apellido": "Montoya",
+      "email": "algo@algo.com",
+      "id": 5
     }
   ]
 }

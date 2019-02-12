@@ -1,8 +1,13 @@
-import React from 'react';
+import React,{Fragment} from 'react';
+import classes from './Modal.css';
+import Backdrop from '../Backdrop/Backdrop';
 const modal = (props)=>(
-    <div className={}>
-        {props.children}
-    </div>
+    <Fragment>
+        <Backdrop/>
+        <div className={classes.Modal}>
+            {props.children}
+        </div>
+    </Fragment>
 );
 
 export default modal;
