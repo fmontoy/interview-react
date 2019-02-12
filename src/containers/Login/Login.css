@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.Login button{
+.Button{
     height:50px;
     width:100px;
     border:4px solid #542a2e;
@@ -15,17 +15,18 @@
     font-weight: bolder;
 }
 
-.Login button:hover{
+.Button:hover{
     background-color: #f47c66;
     border-color: #634a4c;
     color:#dbd4d5;
 }
 
-.Login button:disabled{
+.Button:disabled{
     opacity:0.5
 }
 
 .Input{
+    outline:none;
     height:25px;
     border-radius: 3px;
     font-weight: bold;

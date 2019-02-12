@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import classes from './Login.css';
 import axios from 'axios';
+import Modal from '../../components/UI/Modal/Modal';
 class Login extends Component{
     state = {
         form:{
@@ -31,12 +32,17 @@ class Login extends Component{
                 placeholder:'algo@algo.com',
                 validation:{
                     required:true,
-                    regex:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
+                    regex:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([A-Za-z]{2,3})$/
                 },
                 valid:false
             }
         },
-        isFormValid:true
+        isFormValid:true,
+        error: {
+            state:false,
+            title:'ERROR',
+            message:''
+        }
     }
 
     inputChangedHandler = (event,key)=>{
@@ -50,7 +56,7 @@ class Login extends Component{
        for (const key in updatedForm) {
             validForm = updatedForm[key].valid && validForm
        }
-       this.setState({form:updatedForm, isFormValid:!validForm})
+       this.setState({form:updatedForm, isFormValid:!validForm});
        
     }
 
@@ -73,10 +79,19 @@ class Login extends Component{
             form[key] = finalForm[key].value
         }
 
-        axios.post("http://localhost:3001/products",form).
-            then((response)=>{
-                console.log(response)
+        axios.post("http://localhost:3001/sign_in",form)
+        .then((response)=>{
+                const error = {...this.state.error};
+                error.message = "Se encontro un error";
+                error.state = true;
+                this.setState({error:error});
             });
+    }
+
+    onCloseHandler = () =>{
+        const error = {...this.state.error};
+        error.state = false;
+        this.setState({error:error});
     }
 
     render(){
@@ -87,8 +102,17 @@ class Login extends Component{
                 config:this.state.form[key]
             });
         }
+
         return(
+            
             <div className={classes.Login}>
+            <Modal 
+                show={this.state.error.state} 
+                close={this.onCloseHandler}
+                title={this.state.error.title}
+                msg={this.state.error.message}>
+            <button onClick={this.onCloseHandler}>Ok</button>    
+            </Modal>
             <h1>Inicio de Sesión</h1>
                 {formInputs.map((input,index) =>{
                     return (
@@ -107,7 +131,8 @@ class Login extends Component{
                     ) 
                 })}
                 <button onClick={this.submitFormHandler} 
-                        disabled={this.state.isFormValid}>
+                        disabled={this.state.isFormValid}
+                        className={classes.Button}>
                         LOGIN</button>
             </div>
         );

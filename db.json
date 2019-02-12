@@ -1,5 +1,24 @@
 {
-  "sign_in": [],
+  "sign_in": [
+    {
+      "nombre": "Felipe",
+      "apellido": "Montoya",
+      "email": "algo@gmail.com",
+      "id": 1
+    },
+    {
+      "nombre": "Felipe",
+      "apellido": "Montoya",
+      "email": "Alv@gmail.com",
+      "id": 2
+    },
+    {
+      "nombre": "Felipe",
+      "apellido": "Montoya",
+      "email": "Alvarez@gmail.com",
+      "id": 3
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -24,12 +43,6 @@
       "sku": 6327237255,
       "name": "Microphone",
       "price": 543
-    },
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "algo@algo.com",
-      "id": 5
     }
   ]
 }
