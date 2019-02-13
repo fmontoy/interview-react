@@ -7,7 +7,7 @@ Aplicación para la visualización de productos
 * El branch Master está actualizado con la última versión de la aplicación
 * Instale las dependencias del proyecto `npm install`
 * Inicie el servidor de desarrollo `npm start`
-* Inicie el servidor en el puerto 3001 `json-server --watch db.json --port 3001`
+* Inicie el servidor para backend en el puerto 3001 `json-server --watch db.json --port 3001`
 * Ingrese a la url http://localhost:3000 en su navegador
 
 ### Observaciones:
