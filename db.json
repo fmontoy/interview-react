@@ -1,5 +1,11 @@
 {
   "sign_in": [
+    {
+      "nombre": "Felipe",
+      "apellido": "Montoya",
+      "email": "fmontoya@gmail.com",
+      "id": 1
+    }
   ],
   "products": [
     {
