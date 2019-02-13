@@ -1,23 +1,5 @@
 {
   "sign_in": [
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "algo@gmail.com",
-      "id": 1
-    },
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "Alv@gmail.com",
-      "id": 2
-    },
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "Alvarez@gmail.com",
-      "id": 3
-    }
   ],
   "products": [
     {
@@ -43,6 +25,18 @@
       "sku": 6327237255,
       "name": "Microphone",
       "price": 543
+    },
+    {
+      "id": 5,
+      "sku": 51253234,
+      "name": "Display",
+      "price": 300000
+    },
+    {
+      "id": 6,
+      "sku": 512534124,
+      "name": "Laptop",
+      "price": 1000000
     }
   ]
 }

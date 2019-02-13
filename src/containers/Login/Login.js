@@ -32,15 +32,15 @@ class Login extends Component{
                 placeholder:'algo@algo.com',
                 validation:{
                     required:true,
-                    regex:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([A-Za-z]{2,3})$/
+                    regex:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([A-Za-z])+$/
                 },
                 valid:false
             }
         },
         isFormValid:true,
-        error: {
+        modal: {
             state:false,
-            title:'ERROR',
+            title:'',
             message:''
         }
     }
@@ -56,8 +56,7 @@ class Login extends Component{
        for (const key in updatedForm) {
             validForm = updatedForm[key].valid && validForm
        }
-       this.setState({form:updatedForm, isFormValid:!validForm});
-       
+       this.setState({form:updatedForm, isFormValid:!validForm});  
     }
 
     validateForm(value,rules){
@@ -69,7 +68,6 @@ class Login extends Component{
             isValid = rules.regex.test(value, () => {}) && isValid
         }
         return isValid;
-
     }
 
     submitFormHandler = () =>{
@@ -81,17 +79,33 @@ class Login extends Component{
 
         axios.post("http://localhost:3001/sign_in",form)
         .then((response)=>{
-                const error = {...this.state.error};
-                error.message = "Se encontro un error";
-                error.state = true;
-                this.setState({error:error});
-            });
+            const success= {...this.state.modal};
+            success.state=true;
+            success.title = "Logeado";
+            success.message="Te has logeado exitosamente"
+            this.setState({modal:success});
+            })
+        .catch(err=>{
+            const error = {...this.state.modal};
+            error.state = true;
+            error.title = "ERROR";
+            error.message = "Lo sentimos, hay un problema."
+            this.setState({modal:error});
+        });
     }
 
     onCloseHandler = () =>{
-        const error = {...this.state.error};
-        error.state = false;
-        this.setState({error:error});
+        const modal = {...this.state.modal};
+        if(modal.title==="ERROR"){
+            modal.state = false;
+            this.setState({modal:modal});
+        }else if(modal.title ==="Logeado"){
+            console.log("aquí estoy");
+            modal.state = false;
+            this.setState({modal:modal});
+            this.props.history.push({pathname:'/products'})
+        }
+        
     }
 
     render(){
@@ -107,16 +121,17 @@ class Login extends Component{
             
             <div className={classes.Login}>
             <Modal 
-                show={this.state.error.state} 
+                show={this.state.modal.state}
                 close={this.onCloseHandler}
-                title={this.state.error.title}
-                msg={this.state.error.message}>
-            <button onClick={this.onCloseHandler}>Ok</button>    
+                title={this.state.modal.title}
+                msg={this.state.modal.message}>
+            <button className={classes.ModalButton} onClick={this.onCloseHandler}>Ok</button>    
             </Modal>
+
             <h1>Inicio de Sesión</h1>
                 {formInputs.map((input,index) =>{
                     return (
-                        <div key={index}>
+                        <div className={classes.FormContainer} key={index}>
                             <label >{input.config.label}:</label><br></br>
                             <input
                             key={input.id}

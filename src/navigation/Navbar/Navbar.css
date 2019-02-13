@@ -1,0 +1,36 @@
+.Navbar{
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    width:100%;
+}
+.Link{
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.Link:hover{
+  opacity: 0.8;
+  background-color:rgba(0,0,0,0.8)
+}
+
+.Back{
+    float: right;
+}
+
+.Brand{
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px; 
+}
+.Brand:hover{
+    opacity: 0.8;
+}

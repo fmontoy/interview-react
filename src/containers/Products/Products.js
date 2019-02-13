@@ -20,7 +20,6 @@ class Products extends Component{
                     product['stock'] = '10';
                     return product;
                 });
-                console.log(products);
                 this.setState({products:products,showModal:false});
                 
               })

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from './containers/Login/Login';
-import Products from './containers/Products/Products';
-
+import Page from './navigation/Page/Page';
+import {BrowserRouter} from 'react-router-dom';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Products/>
-      </div>
+    <BrowserRouter>
+    <Page/>
+    </BrowserRouter>          
     );
   }
 }
