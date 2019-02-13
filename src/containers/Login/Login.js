@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import classes from './Login.css';
-import axios from 'axios';
+import axios from '../../axios';
 import Modal from '../../components/UI/Modal/Modal';
 class Login extends Component{
     state = {
@@ -8,31 +8,30 @@ class Login extends Component{
             nombre:{
                 type:'text',
                 value:'',
-                label:'Nombre',
                 placeholder:'Nombre',
                 validation:{
-                    required:true
+                    required:true,
+                    minLength:4
                 },
                 valid:false
             },
             apellido:{
                 type:'text',
                 value:'',
-                label:'Apellido',
                 placeholder:'Apellido',
                 validation:{
-                    required:true
+                    required:true,
+                    minLength:4
                 },
                 valid:false
             },
             email:{
                 type:'email',
                 value:'',
-                label:'Email',
-                placeholder:'algo@algo.com',
+                placeholder:'Email',
                 validation:{
                     required:true,
-                    regex:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([A-Za-z])+$/
+                    regex:/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([A-Za-z])+.([A-Za-z])*$/
                 },
                 valid:false
             }
@@ -45,6 +44,7 @@ class Login extends Component{
         }
     }
 
+    //Funcion que permite actualizar el valor ingresado por el usuario en el formulario    
     inputChangedHandler = (event,key)=>{
        const updatedForm = {...this.state.form}
        const updatedElement = {...updatedForm[key]}
@@ -59,10 +59,14 @@ class Login extends Component{
        this.setState({form:updatedForm, isFormValid:!validForm});  
     }
 
+    // Validar si las reglas para validar formulario estan siendo cumplidas 
     validateForm(value,rules){
         let isValid = true;
         if(rules.required){
             isValid = value.trim() !== '' && isValid
+        }
+        if(rules.minLength){
+            isValid = value.length >= rules.minLength && isValid
         }
         if(rules.regex){
             isValid = rules.regex.test(value, () => {}) && isValid
@@ -70,6 +74,7 @@ class Login extends Component{
         return isValid;
     }
 
+    //Enviar POST con el formulario, mostrar un Modal en caso de exito o error
     submitFormHandler = () =>{
         const finalForm = this.state.form;
         let form = {}
@@ -77,7 +82,7 @@ class Login extends Component{
             form[key] = finalForm[key].value
         }
 
-        axios.post("http://localhost:3001/sign_in",form)
+        axios.post("/sign_in",form)
         .then((response)=>{
             const success= {...this.state.modal};
             success.state=true;
@@ -94,6 +99,7 @@ class Login extends Component{
         });
     }
 
+    //Funcion para cerrar el Modal con el boton 'Ok'
     onCloseHandler = () =>{
         const modal = {...this.state.modal};
         if(modal.title==="ERROR"){
@@ -118,37 +124,33 @@ class Login extends Component{
         }
 
         return(
-            
+   
             <div className={classes.Login}>
-            <Modal 
-                show={this.state.modal.state}
-                close={this.onCloseHandler}
-                title={this.state.modal.title}
-                msg={this.state.modal.message}>
-            <button className={classes.ModalButton} onClick={this.onCloseHandler}>Ok</button>    
-            </Modal>
-
-            <h1>Inicio de Sesión</h1>
-                {formInputs.map((input,index) =>{
-                    return (
-                        <div className={classes.FormContainer} key={index}>
-                            <label >{input.config.label}:</label><br></br>
-                            <input
-                            key={input.id}
-                            type={input.config.type} 
-                            value = {input.config.value}
-                            placeholder = {input.config.placeholder} 
-                            onChange={(event)=>this.inputChangedHandler(event,input.id)}
-                            className={[classes.Input,this.state.form[input.id].valid 
-                                      ? classes.Valid
-                                      : classes.Invalid].join(' ')}/>
-                        </div>
-                    ) 
-                })}
-                <button onClick={this.submitFormHandler} 
-                        disabled={this.state.isFormValid}
-                        className={classes.Button}>
-                        LOGIN</button>
+                <Modal 
+                    show={this.state.modal.state}
+                    title={this.state.modal.title}
+                    msg={this.state.modal.message}>
+                    <button className={classes.ModalButton} onClick={this.onCloseHandler}>Ok</button>    
+                </Modal>         
+                <div className={classes.Form}>
+                    <h1>Inicio de Sesión</h1>
+                        {formInputs.map((input,index) =>{
+                            return (
+                                    <input key={index}
+                                    type={input.config.type} 
+                                    value = {input.config.value}
+                                    placeholder = {input.config.placeholder} 
+                                    onChange={(event)=>this.inputChangedHandler(event,input.id)}
+                                    className={[classes.Input,this.state.form[input.id].valid 
+                                            ? classes.Valid
+                                            : classes.Invalid].join(' ')}/>
+                            );
+                        })}
+                        <button onClick={this.submitFormHandler} 
+                                disabled={this.state.isFormValid}
+                                className={classes.Button}>
+                            LOGIN</button>
+                </div>
             </div>
         );
     }

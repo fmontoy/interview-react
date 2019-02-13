@@ -1,10 +1,11 @@
 .DetailProduct{
-    margin-top:3%;
     text-align:center;
-    padding-top:20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+}
+.DetailProduct h1{
+    font-size: 50px;
 }

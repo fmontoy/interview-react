@@ -3,6 +3,8 @@ import classes from './Product.css';
 import thumbnail from '../../assets/images/thumbnail.png'
 import {Link} from 'react-router-dom';
 import Details from '../Details/Details';
+
+//Un Card para mostrar cada producto
 const product = (props) =>(
     <div className={classes.Card}>
         <h1>{props.product.name}</h1>

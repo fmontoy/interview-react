@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component,Fragment} from 'react';
 import {Route} from 'react-router-dom';
 import Login from '../../containers/Login/Login';
 import Products from '../../containers/Products/Products';
@@ -7,14 +7,12 @@ import DetailProduct from '../../containers/DetailProduct/DetailProduct';
 class Page extends Component{
     render(){
         return(
-                <div >
+                <Fragment >
                     <Navbar/>
-                    <div >
                     <Route path="/" exact component = {Login}/>
                     <Route path="/products" exact component={Products}/>
                     <Route path="/product/:id" exact component={DetailProduct}/>
-                    </div>
-                </div>
+                </Fragment>
         );
     }
 }

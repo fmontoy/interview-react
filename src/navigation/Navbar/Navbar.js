@@ -7,7 +7,7 @@ class Navbar extends Component{
     render(){
         return(
             <nav className={classes.Navbar}>
-            <Link className={classes.Brand} to="/products"><b>Wolox</b></Link>
+            <Link className={classes.Brand} to="#"><b>Wolox</b></Link>
             {this.props.location.pathname ==="/"?
             null:
             <div>

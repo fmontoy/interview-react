@@ -1,6 +1,8 @@
 import React,{Fragment} from 'react';
 import classes from './Modal.css';
 import Backdrop from '../Backdrop/Backdrop';
+
+//Componente que permite customizar un 'Alert'
 const modal = (props)=>(
     <Fragment>
         <Backdrop show={props.show}/>

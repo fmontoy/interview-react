@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import classes from './Products.css';
 import Product from '../../components/Product/Product';
-import axios from 'axios';
+import axios from '../../axios';
 import Modal from '../../components/UI/Modal/Modal';
 
 class Products extends Component{
@@ -10,8 +10,9 @@ class Products extends Component{
         showModal:true
     }
 
+    //Obtener todos los productos del servidor
     componentDidMount(){
-        axios.get("http://localhost:3001/products")
+        axios.get("/products")
               .then(response=>{
                 let products = response.data.map(product=>{
                     product['category'] = 'Belleza';

@@ -1,5 +1,6 @@
 import React,{Fragment} from 'react';
 
+//Componente para mostrat los detalles del producto
 const details = (props) =>(
     <Fragment>
         <p><b>Precio:</b> ${new Intl.NumberFormat('ar-ES',
