@@ -1,41 +1,5 @@
 {
   "sign_in": [
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "fmontoya@gmail.com",
-      "id": 1
-    },
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "algo@algo.com",
-      "id": 2
-    },
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "fmontoyalvarez@gmail.com",
-      "id": 3
-    },
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "Alvarez@gmail.com",
-      "id": 4
-    },
-    {
-      "nombre": "yenny",
-      "apellido": "moreno",
-      "email": "copa@gmail.com",
-      "id": 5
-    },
-    {
-      "nombre": "Felipe",
-      "apellido": "Montoya",
-      "email": "fmontoy8@eafit.edu.co",
-      "id": 6
-    }
   ],
   "products": [
     {
