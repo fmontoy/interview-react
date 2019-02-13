@@ -13,4 +13,5 @@ Aplicación para la visualización de productos
 ### Observaciones:
 1. El servidor de desarrollo de react inicia en el puerto 3000, por esto el servidor de backend esta iniciado en el 3001
 2. La url usada para hacer los http requests fue http://localhost:3001
-3. Si modifica el puerto 3001 para el backend, es necesario que ingrese a src/axios.js y modifique el item "BaseURL" por la url que elija.
+3. Si modifica el puerto 3001 para el backend, es necesario que ingrese a src/axios.js y modifique el item "BaseURL" por la url que elija
+4. Se puso un Timeout al cargar los productos para que se evidenciara el mensaje de carga

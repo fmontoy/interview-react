@@ -3,7 +3,7 @@ import classes from './Navbar.css';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
 class Navbar extends Component{
-
+    
     render(){
         return(
             <nav className={classes.Navbar}>
@@ -11,12 +11,11 @@ class Navbar extends Component{
             {this.props.location.pathname ==="/"?
             null:
             <div>
-            <Link to="/" className={classes.Link  + ' ' + classes.Back}>
-                Logout
-            </Link>
-            <Link to="/products" className={classes.Link}>Products</Link>
+                <Link to="/" className={classes.Link  + ' ' + classes.Back}>
+                    Logout
+                </Link>
+                <Link to="/products" className={classes.Link}>Products</Link>
             </div>}
-
             </nav>
         );
     }

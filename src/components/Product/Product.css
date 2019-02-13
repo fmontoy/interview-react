@@ -8,13 +8,14 @@
 
 }
 
+
+.Card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 .Card img{
     width:50%;
     height:50%;
-}
-/* On mouse-over, add a deeper shadow */
-.Card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .Card button{
