@@ -7,7 +7,11 @@ import Modal from '../../components/UI/Modal/Modal';
 class Products extends Component{
     state={
         products:[],
-        showModal:true
+        modal:{
+            show:true,
+            title:'Espera',
+            msg:'Estamos cargando los productos'
+        }
     }
 
     //Obtener todos los productos del servidor
@@ -21,11 +25,19 @@ class Products extends Component{
                     product['stock'] = '10';
                     return product;
                 });
-                this.setState({products:products,showModal:false});
+                const modal = {...this.state.modal}
+                modal.show = false;
+                this.setState({products:products,modal:modal});
                 
               })
               .catch(err=>{
-                  console.log(err);
+                  const modal = {...this.state.modal}
+                  setTimeout(()=>{
+                    modal.title = 'Lo sentimos';
+                    modal.msg = 'Hay un problema con el servidor';
+                  },4000)
+                  modal.show = false;
+                  this.setState({modal:modal});
               });
     }
 
@@ -35,9 +47,9 @@ class Products extends Component{
         })
         return(
             <div className={classes.Products}>
-                <Modal show={this.state.showModal} 
-                       title={"Espera"} 
-                       msg={"Estamos cargando los productos"}/>
+                <Modal show={this.state.modal.show} 
+                       title={this.state.modal.title} 
+                       msg={this.state.modal.msg}/>
                 {products}
             </div>
         )

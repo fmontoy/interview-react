@@ -10,6 +10,7 @@ const product = (props) =>(
         <h1>{props.product.name}</h1>
         <hr></hr>
         <img src={thumbnail} alt=""></img>
+        <p>ID: {props.product.id}</p>
         <Details product={props.product}/>
         <Link to={"/product/" + props.product.id} className={classes.Link}>
             <button>Ver Detalle</button>
