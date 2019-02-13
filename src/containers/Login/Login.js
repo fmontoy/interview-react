@@ -86,8 +86,8 @@ class Login extends Component{
         .then((response)=>{
             const success= {...this.state.modal};
             success.state=true;
-            success.title = "Logeado";
-            success.message="Te has logeado exitosamente"
+            success.title = "Logueado";
+            success.message="Te has logueado exitosamente"
             this.setState({modal:success});
             })
         .catch(err=>{
@@ -105,7 +105,7 @@ class Login extends Component{
         if(modal.title==="ERROR"){
             modal.state = false;
             this.setState({modal:modal});
-        }else if(modal.title ==="Logeado"){
+        }else if(modal.title ==="Logueado"){
             console.log("aquí estoy");
             modal.state = false;
             this.setState({modal:modal});

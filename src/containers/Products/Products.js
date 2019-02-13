@@ -3,7 +3,6 @@ import classes from './Products.css';
 import Product from '../../components/Product/Product';
 import axios from '../../axios';
 import Modal from '../../components/UI/Modal/Modal';
-import spinner from '../../assets/images/spinner.gif';
 class Products extends Component{
     state={
         products:[],
